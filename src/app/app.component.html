@@ -1,0 +1,21 @@
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#" (click)="activeImg = activeImg -1">Previous</a></li>
+  
+  <ng-container *ngFor="let img of images; let i= index;">
+    <li class="page-item" [ngClass]="{active: i=== activeImg}" *ngIf="showImage(i)">
+      <a class="page-link" href="#">{{ i + 1}}</a>
+    </li>
+  </ng-container>
+
+  <li class="page-item" [ngClass]="{disabled: activeImg===images.length -1}">
+    <a class="page-link" href="#" (click)="activeImg = activeImg + 1">Next</a>
+  </li>
+</ul>
+<div class="col-3">
+  <div class="card">
+    <img [src]="images[activeImg].url" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{images[activeImg].title}}</h5>
+    </div>
+  </div>
+</div>
